@@ -7,15 +7,17 @@ This is my custom build of DWM version 6.4 with some patches.
 - actualfullscreen
 - anybar (to support polybar)
 - attachside
+- bottomstack (layout)
 - center
 - centeredmaster
 - cyclelayouts
 - focusdir
 - full gaps
+- fixborders
 - pertag
+- push
 - resizecorners
 - restartsig
-- rotatestack
 - save floats
 - scratchpads
 - sticky

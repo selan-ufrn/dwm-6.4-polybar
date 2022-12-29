@@ -745,9 +745,9 @@ createmon(void)
 	m->topbar = topbar;
 	m->gap = malloc(sizeof(Gap));
 	gap_copy(m->gap, &default_gap);
+	m->bh = bh;
 	m->lt[0] = &layouts[0];
 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
-	m->bh = bh;
 	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
 	m->pertag = ecalloc(1, sizeof(Pertag));
 	m->pertag->curtag = m->pertag->prevtag = 1;
@@ -792,7 +792,8 @@ destroynotify(XEvent *e)
 
 	if ((c = wintoclient(ev->window)))
 		unmanage(c, 1);
-	else if ((m = wintomon(ev->window)) && m->barwin == ev->window)
+	else if (usealtbar && (m = wintomon(ev->window)) && m->barwin == ev->window)
+	// else if ((m = wintomon(ev->window)) && m->barwin == ev->window)
 		unmanagealtbar(ev->window);
 }
 
@@ -1360,7 +1361,8 @@ maprequest(XEvent *e)
 
 	if (!XGetWindowAttributes(dpy, ev->window, &wa) || wa.override_redirect)
 		return;
-	if (wmclasscontains(ev->window, altbarclass, ""))
+	if (usealtbar && wmclasscontains(ev->window, altbarclass, ""))
+	// if (wmclasscontains(ev->window, altbarclass, ""))
 		managealtbar(ev->window, &wa);
 	else if (!wintoclient(ev->window))
 		manage(ev->window, &wa);
@@ -1740,7 +1742,8 @@ scan(void)
 			if (!XGetWindowAttributes(dpy, wins[i], &wa)
 			|| wa.override_redirect || XGetTransientForHint(dpy, wins[i], &d1))
 				continue;
-			if (wmclasscontains(wins[i], altbarclass, ""))
+			if (usealtbar && wmclasscontains(wins[i], altbarclass, ""))
+			// if (wmclasscontains(wins[i], altbarclass, ""))
 				managealtbar(wins[i], &wa);
 			else if (wa.map_state == IsViewable || getstate(wins[i]) == IconicState)
 				manage(wins[i], &wa);
@@ -2351,7 +2354,8 @@ unmapnotify(XEvent *e)
 			setclientstate(c, WithdrawnState);
 		else
 			unmanage(c, 0);
-	} else if ((m = wintomon(ev->window)) && m->barwin == ev->window)
+	// } else if ((m = wintomon(ev->window)) && m->barwin == ev->window)
+	} else if (usealtbar && (m = wintomon(ev->window)) && m->barwin == ev->window)
 		unmanagealtbar(ev->window);
 }
 

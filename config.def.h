@@ -136,7 +136,8 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+// static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {
 	"dmenu_run",
 	// "j4-dmenu-desktop",
@@ -228,14 +229,16 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_h,          focusdir,       {.i = 0 } }, // left
+	{ MODKEY,                       XK_l,          focusdir,       {.i = 1 } }, // right
 	{ MODKEY,                       XK_Left,   focusdir,       {.i = 0 } }, // left
 	{ MODKEY,                       XK_Right,  focusdir,       {.i = 1 } }, // right
 	{ MODKEY,                       XK_Up,     focusdir,       {.i = 2 } }, // up
 	{ MODKEY,                       XK_Down,   focusdir,       {.i = 3 } }, // down
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_h,          setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_l,          setmfact,       {.f = +0.05} },
 	{ MODKEY|ALTKEY,                XK_j,          pushdown,       {0} },
 	{ MODKEY|ALTKEY,                XK_k,          pushup,         {0} },
 	{ MODKEY,                       XK_Tab,        view,           {0} },
@@ -254,7 +257,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_BackSpace,  togglefloating, {0} },
  	{ MODKEY|ShiftMask,             XK_f,          togglefullscr,  {0} },
  	{ MODKEY,                       XK_s,          togglesticky,   {0} },
-	{ MODKEY,                       XK_0,          view,                   {.ui = ~SPTAGMASK } },
+	// { MODKEY,                       XK_0,          view,                   {.ui = ~SPTAGMASK } },
 	// { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	// { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
