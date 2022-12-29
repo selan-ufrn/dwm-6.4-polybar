@@ -11,9 +11,10 @@ This is my custom build of DWM version 6.4 with some patches.
 - center
 - centeredmaster
 - cyclelayouts
+- fixborders
 - focusdir
 - full gaps
-- fixborders
+- ipc
 - pertag
 - push
 - resizecorners
@@ -21,7 +22,7 @@ This is my custom build of DWM version 6.4 with some patches.
 - save floats
 - scratchpads
 - sticky
+- toggletag
 - zoomswap
-- ipc
 
 We also need to add the IPC Patch, so that the polybar can communicate with dwm. See [this website](https://github.com/mihirlad55/polybar-dwm-module).
