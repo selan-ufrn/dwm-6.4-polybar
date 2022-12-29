@@ -11,7 +11,7 @@ This is my custom build of DWM version 6.4 with some patches.
 - center
 - centeredmaster
 - cyclelayouts
-- fixborders
+- fixborders (https://dwm.suckless.org/patches/alpha/dwm-fixborders-6.2.diff)
 - focusdir
 - full gaps
 - ipc
