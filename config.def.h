@@ -88,6 +88,7 @@ static const Rule rules[] = {
 	{ "Blueman-manager",    NULL,        NULL,           0,            1,           1,           -1 },
 	{ "zoom",               NULL,        NULL,           0,            1,           1,           -1 },
 	{ "xpad",               NULL,        NULL,           0,            1,           1,           -1 },
+	{ "gnome-calculator",   NULL,        NULL,           0,            1,           1,           -1 },
 	{ NULL,                 NULL,        "System Logout",0,            1,           1,           -1 },
 	{ NULL,                 NULL,        "Brave",        1 << 1,       1,           0,           -1 },
 	{ "Skype",              NULL,        NULL,           1 << 5,       1,           1,           -1 },
