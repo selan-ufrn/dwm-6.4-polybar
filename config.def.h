@@ -223,9 +223,12 @@ static const Key keys[] = {
   { 0,                  XF86XK_MonBrightnessDown, spawn,       SHCMD("mon_brightness_down") },
   { 0,                  XF86XK_KbdBrightnessUp,   spawn,       SHCMD("kbd_brightness_up") },
   { 0,                  XF86XK_KbdBrightnessDown, spawn,       SHCMD("kbd_brightness_down") },
-  { 0,                  XF86XK_AudioPlay,         spawn,       SHCMD("audio_play_pause") },
-  { 0,                  XF86XK_AudioPrev,         spawn,       SHCMD("audio_prev") },
-  { 0,                  XF86XK_AudioNext,         spawn,       SHCMD("audio_next") },
+  // { 0,                  XF86XK_AudioPlay,         spawn,       SHCMD("audio_play_pause") },
+  // { 0,                  XF86XK_AudioPrev,         spawn,       SHCMD("audio_prev") },
+  // { 0,                  XF86XK_AudioNext,         spawn,       SHCMD("audio_next") },
+  { 0,                  XF86XK_AudioPlay,         spawn,       SHCMD("playerctl --all-players play-pause") },
+  { 0,                  XF86XK_AudioPrev,         spawn,       SHCMD("playerctl prev") },
+  { 0,                  XF86XK_AudioNext,         spawn,       SHCMD("playerctl next") },
 
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
