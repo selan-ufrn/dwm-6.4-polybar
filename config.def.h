@@ -10,7 +10,7 @@
 #include "colors/stock.h" // Custom colors. See comment in the code, where colors were originally defined.
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const Gap default_gap        = {.isgap = 1, .realgap = 10, .gappx = 10};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -89,15 +89,13 @@ static const Rule rules[] = {
 	{ "zoom",               NULL,        NULL,           0,            1,           1,           -1 },
 	{ "xpad",               NULL,        NULL,           0,            1,           1,           -1 },
 	{ "gnome-calculator",   NULL,        NULL,           0,            1,           1,           -1 },
+	{ "Lxappearance",       NULL,        NULL,           0,            1,           1,           -1 },
 	{ NULL,                 NULL,        "System Logout",0,            1,           1,           -1 },
 	{ NULL,                 NULL,        "Brave",        1 << 1,       1,           0,           -1 },
 	{ "Skype",              NULL,        NULL,           1 << 5,       1,           1,           -1 },
-	{ "LibreWolf",          NULL,        NULL,           1 << 1,       1,           0,           -1 },
 	{ "firefox",            NULL,        NULL,           1 << 1,       1,           0,           -1 },
 	{ "telegram-desktop",   NULL,        NULL,           1 << 2,       1,           0,           -1 },
 	{ "discord",            NULL,        NULL,           1 << 3,       1,           0,           -1 },
-	{ "Evolution",          NULL,        NULL,           1 << 6,       1,           0,           -1 },
-	{ "Thunderbird",        NULL,        NULL,           1 << 6,       1,           0,           -1 },
 	{ "VirtualBox Manager", NULL,        NULL,           1 << 7,       1,           1,           -1 },
 	{ "qBittorrent",        NULL,        NULL,           1 << 7,       1,           0,           -1 },
 	// { "mpv",                NULL,        NULL,           0,            1,           1,           -1 },
@@ -205,13 +203,13 @@ static const Key keys[] = {
 	{ ControlMask|ALTKEY,           XK_e,          spawn,                  SHCMD("flameshot gui -p $HOME/Pictures/screenshots/") },
 	{ ControlMask|ALTKEY,           XK_f,          spawn,                  {.v = filemgr_cmd} },
  	{ ControlMask|ALTKEY,           XK_k,          togglescratch,          {.ui = 2 } },
-	{ ControlMask|ALTKEY,           XK_l,          spawn,                  SHCMD("xautolock -locknow") },
+	{ ControlMask|ALTKEY,           XK_l,          spawn,                  SHCMD("i3lock") },
 	{ ControlMask|ALTKEY,           XK_m,          spawn,                  {.v = mail_cmd} },
 	{ ControlMask|ALTKEY,           XK_o,          spawn,                  SHCMD("openboard") },
 	// { ControlMask|ALTKEY,           XK_p,          spawn,                  SHCMD("toggle_xpad") },
  	{ ControlMask|ALTKEY,           XK_r,          togglescratch,          {.ui = 1 } },
 	{ ControlMask|ALTKEY,           XK_s,          spawn,                  SHCMD("spotify") },
-  { ControlMask|ALTKEY,           XK_t,          spawn,                  SHCMD("system-monitoring-center") },
+  // { ControlMask|ALTKEY,           XK_t,          spawn,                  SHCMD("system-monitoring-center") },
 	{ ControlMask|ALTKEY,           XK_v,          spawn,                  SHCMD("pavucontrol") },
  	{ MODKEY,                       XK_z,          togglescratch,          {.ui = 0 } },
 
@@ -250,7 +248,8 @@ static const Key keys[] = {
   { MODKEY,                       XK_m,          zoom,           {0} },
 	// { MODKEY|ShiftMask,             XK_c,          killclient,     {0} },
 	{ MODKEY,                       XK_q,          killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_q,          spawn,          SHCMD("logout_window") },
+	// { MODKEY|ShiftMask,             XK_q,          spawn,          SHCMD("logout_window") },
+	{ MODKEY|ShiftMask,             XK_q,          spawn,          SHCMD("dmenu_logout") },
 	// { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	// { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
