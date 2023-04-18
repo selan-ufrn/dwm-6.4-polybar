@@ -159,23 +159,12 @@ static const char *term2cmd[]  = { "alacritty", NULL };
 static const char *term3cmd[]  = { "st", NULL };
 //== firefox
 static const char *browser_cmd[]  = { "firefox", NULL };
-//== brave
-// static const char *brave_cmd[]  = { "brave", NULL };
-//== librewolf
-// static const char *librewolf_cmd[]  = { "librewolf", NULL };
-//== pcmanfm 
-// static const char *filemgr_cmd[]  = { "pcmanfm", NULL };
+//== File manager
 static const char *filemgr_cmd[]  = { "thunar", NULL };
-//== thunderbird
-// static const char *mail_cmd[]  = { "thunderbird", NULL };
-// static const char *mail_cmd[]  = { "mailspring", NULL };
-static const char *mail_cmd[]  = { "evolution", NULL };
 //== discord
 static const char *discord_cmd[]  = { "discord", NULL };
-//== keepassxc
-// static const char *keepass_cmd[]  = { "keepassxc", NULL };
 //== spotify
-static const char *spotify_cmd[]  = { "spotify", NULL };
+// static const char *spotify_cmd[]  = { "spotify", NULL };
 //== sxiv to change background and dwm's colorscheme:
 // After app runs, choose the new background and then type
 // Ctrl-x + Ctrl-w
@@ -199,18 +188,19 @@ static const Key keys[] = {
   //== Keybindings for programs using the format SUPER + ALT + "key"
 	{ ControlMask|ALTKEY,           XK_b,          spawn,                  {.v = browser_cmd} },
 	{ ControlMask|ALTKEY,           XK_c,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
+	{ ControlMask|ALTKEY,           XK_w,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
 	{ ControlMask|ALTKEY,           XK_d,          spawn,                  {.v = discord_cmd} },
 	{ ControlMask|ALTKEY,           XK_e,          spawn,                  SHCMD("flameshot gui -p $HOME/Pictures/screenshots/") },
 	{ ControlMask|ALTKEY,           XK_f,          spawn,                  {.v = filemgr_cmd} },
  	{ ControlMask|ALTKEY,           XK_k,          togglescratch,          {.ui = 2 } },
 	{ ControlMask|ALTKEY,           XK_l,          spawn,                  SHCMD("i3lock") },
-	{ ControlMask|ALTKEY,           XK_m,          spawn,                  {.v = mail_cmd} },
 	{ ControlMask|ALTKEY,           XK_o,          spawn,                  SHCMD("openboard") },
-	// { ControlMask|ALTKEY,           XK_p,          spawn,                  SHCMD("toggle_xpad") },
  	{ ControlMask|ALTKEY,           XK_r,          togglescratch,          {.ui = 1 } },
+	{ ControlMask|ALTKEY,           XK_m,          spawn,                  SHCMD("spotify") },
 	{ ControlMask|ALTKEY,           XK_s,          spawn,                  SHCMD("spotify") },
   // { ControlMask|ALTKEY,           XK_t,          spawn,                  SHCMD("system-monitoring-center") },
 	{ ControlMask|ALTKEY,           XK_v,          spawn,                  SHCMD("pavucontrol") },
+	{ ControlMask|ALTKEY,           XK_a,          spawn,                  SHCMD("pavucontrol") },
  	{ MODKEY,                       XK_z,          togglescratch,          {.ui = 0 } },
 
   //== Brightness and volume control
@@ -232,24 +222,23 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_h,          focusdir,       {.i = 0 } }, // left
-	{ MODKEY,                       XK_l,          focusdir,       {.i = 1 } }, // right
+	{ MODKEY,                       XK_h,      focusdir,       {.i = 0 } }, // left
+	{ MODKEY,                       XK_l,      focusdir,       {.i = 1 } }, // right
 	{ MODKEY,                       XK_Left,   focusdir,       {.i = 0 } }, // left
 	{ MODKEY,                       XK_Right,  focusdir,       {.i = 1 } }, // right
 	{ MODKEY,                       XK_Up,     focusdir,       {.i = 2 } }, // up
 	{ MODKEY,                       XK_Down,   focusdir,       {.i = 3 } }, // down
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_h,          setmfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,             XK_l,          setmfact,       {.f = +0.05} },
-	{ MODKEY|ALTKEY,                XK_j,          pushdown,       {0} },
-	{ MODKEY|ALTKEY,                XK_k,          pushup,         {0} },
-	{ MODKEY,                       XK_Tab,        view,           {0} },
-  { MODKEY,                       XK_m,          zoom,           {0} },
-	// { MODKEY|ShiftMask,             XK_c,          killclient,     {0} },
-	{ MODKEY,                       XK_q,          killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ALTKEY,                XK_j,      pushdown,       {0} },
+	{ MODKEY|ALTKEY,                XK_k,      pushup,         {0} },
+	{ MODKEY,                       XK_Tab,    view,           {0} },
+  { MODKEY,                       XK_m,      zoom,           {0} },
+	{ MODKEY,                       XK_q,      killclient,     {0} },
 	// { MODKEY|ShiftMask,             XK_q,          spawn,          SHCMD("logout_window") },
-	{ MODKEY|ShiftMask,             XK_q,          spawn,          SHCMD("dmenu_logout") },
+	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("dmenu_logout") },
 	// { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	// { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -296,7 +285,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
 	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
+	TAGKEYS(                        XK_7,                      6) 
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 };
@@ -311,7 +300,8 @@ static const Button buttons[] = {
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button1,        resizemouse,    {0} },
+	{ ClkClientWin,         MODKEY|ALTKEY,  Button1,        resizemouse,    {0} },
+	{ ClkClientWin,         MODKEY|ShiftMask,Button1,       resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
