@@ -63,11 +63,13 @@ const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL
 // const char *spcmd2[] = {"kitty", "--name", "spfm", "-o", "initial_window_width=120", "-o", "initial_window_height=30", "ranger", NULL };
 // const char *spcmd2[] = {"kitty", "--name", "spfm", "-o", "initial_window_width=122","-o", "initial_window_height=30", "--detach", "ranger", NULL };
 const char *spcmd3[] = {"keepassxc", NULL };
+const char *spcmd4[] = {"st", "-n", "spmusic", "-g", "144x41", "-e", "ncmpcpp", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spranger",    spcmd2},
 	{"keepassxc",   spcmd3},
+	{"spmusic",     spcmd4},
 };
 
 /* tagging */
@@ -102,6 +104,7 @@ static const Rule rules[] = {
 	{ NULL,                 "spterm",		 NULL,           SPTAG(0),		 1,           1,			     -1 },
 	{ NULL,                 "spfm",		   NULL,           SPTAG(1),		 1,           1,			     -1 },
 	{ NULL,                 "keepassxc", NULL,           SPTAG(2),		 1,           1,			     -1 },
+	{ NULL,                 "spmusic",   NULL,           SPTAG(3),		 1,           1,			     -1 },
 };
 
 /* layout(s) */
@@ -174,34 +177,34 @@ static const char *discord_cmd[]  = { "discord", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,         SHCMD("dmenu_run_customized.sh") }, 
-	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return,     spawn,                  {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = term2cmd } },
-	{ MODKEY|ALTKEY,                XK_Return,     spawn,                  {.v = term3cmd } },
-  { MODKEY,                       XK_c,          spawn,                  SHCMD("toggle_dark_conky") },
-	{ MODKEY|ShiftMask,             XK_c,          spawn,                  SHCMD("toggle_light_conky") },
-	{ MODKEY|Mod1Mask,              XK_4,          spawn,                  SHCMD("scshot -s $HOME/Pictures/screenshots/") },
-	{ MODKEY,                       XK_t,          spawn,                  SHCMD("toggle_picom") },
-	{ MODKEY,                       XK_a,          spawn,                  SHCMD("toggle_systray") },
+	{ MODKEY,                       XK_p,          spawn,             SHCMD("dmenu_run_customized.sh") }, 
+	{ MODKEY|ShiftMask,             XK_d,          spawn,             {.v = dmenucmd } },
+	{ MODKEY,                       XK_Return,     spawn,             {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return,     spawn,             {.v = term2cmd } },
+	{ MODKEY|ALTKEY,                XK_Return,     spawn,             {.v = term3cmd } },
+  { MODKEY,                       XK_c,          spawn,             SHCMD("toggle_dark_conky") },
+	{ MODKEY|ShiftMask,             XK_c,          spawn,             SHCMD("toggle_light_conky") },
+	{ MODKEY|Mod1Mask,              XK_4,          spawn,             SHCMD("scshot -s $HOME/Pictures/screenshots/") },
+	{ MODKEY,                       XK_t,          spawn,             SHCMD("toggle_picom") },
+	{ MODKEY,                       XK_a,          spawn,             SHCMD("toggle_systray") },
 
   //== Keybindings for programs using the format SUPER + ALT + "key"
-	{ ControlMask|ALTKEY,           XK_b,          spawn,                  {.v = browser_cmd} },
-	{ ControlMask|ALTKEY,           XK_c,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
-	{ ControlMask|ALTKEY,           XK_w,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
-	{ ControlMask|ALTKEY,           XK_d,          spawn,                  {.v = discord_cmd} },
-	{ ControlMask|ALTKEY,           XK_e,          spawn,                  SHCMD("flameshot gui -p $HOME/Pictures/screenshots/") },
-	{ ControlMask|ALTKEY,           XK_f,          spawn,                  {.v = filemgr_cmd} },
- 	{ ControlMask|ALTKEY,           XK_k,          togglescratch,          {.ui = 2 } },
-	{ ControlMask|ALTKEY,           XK_l,          spawn,                  SHCMD("i3lock") },
-	{ ControlMask|ALTKEY,           XK_o,          spawn,                  SHCMD("openboard") },
- 	{ ControlMask|ALTKEY,           XK_r,          togglescratch,          {.ui = 1 } },
-	{ ControlMask|ALTKEY,           XK_m,          spawn,                  SHCMD("spotify") },
-	{ ControlMask|ALTKEY,           XK_s,          spawn,                  SHCMD("spotify") },
-  // { ControlMask|ALTKEY,           XK_t,          spawn,                  SHCMD("system-monitoring-center") },
-	{ ControlMask|ALTKEY,           XK_v,          spawn,                  SHCMD("pavucontrol") },
-	{ ControlMask|ALTKEY,           XK_a,          spawn,                  SHCMD("pavucontrol") },
- 	{ MODKEY,                       XK_z,          togglescratch,          {.ui = 0 } },
+	{ MODKEY|ALTKEY,           XK_b,          spawn,                  {.v = browser_cmd} },
+	{ MODKEY|ALTKEY,           XK_c,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
+	{ MODKEY|ALTKEY,           XK_w,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
+	{ MODKEY|ALTKEY,           XK_d,          spawn,                  {.v = discord_cmd} },
+	{ MODKEY|ALTKEY,           XK_e,          spawn,                  SHCMD("flameshot gui -p $HOME/Pictures/screenshots/") },
+	{ MODKEY|ALTKEY,           XK_f,          spawn,                  {.v = filemgr_cmd} },
+ 	{ MODKEY|ALTKEY,           XK_k,          togglescratch,          {.ui = 2 } },
+	{ MODKEY|ALTKEY,           XK_l,          spawn,                  SHCMD("i3lock") },
+	{ MODKEY|ALTKEY,           XK_o,          spawn,                  SHCMD("openboard") },
+ 	{ MODKEY|ALTKEY,           XK_r,          togglescratch,          {.ui = 1 } },
+	{ MODKEY|ALTKEY,           XK_m,          togglescratch,          {.ui = 3 }  },
+	{ MODKEY|ALTKEY,           XK_s,          spawn,                  SHCMD("spotify") },
+// { MODKEY|ALTKEY,           XK_t,          spawn,                  SHCMD("system-monitoring-center") },
+	{ MODKEY|ALTKEY,           XK_v,          spawn,                  SHCMD("pavucontrol") },
+	{ MODKEY|ALTKEY,           XK_a,          spawn,                  SHCMD("pavucontrol") },
+ 	{ MODKEY,                  XK_z,          togglescratch,          {.ui = 0 } },
 
   //== Brightness and volume control
   { 0,                  XF86XK_AudioLowerVolume,  spawn,       SHCMD("vol_lower") },
@@ -259,7 +262,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
   //== Fn Keys.
-  { MODKEY,                       XK_F1,        spawn,            SHCMD("groff -mom -tbl $HOME/.local/share/dwm/system_help.mom -Tpdf | zathura -") },
+  // { MODKEY,                       XK_F1,        spawn,            SHCMD("groff -mom -tbl $HOME/.local/share/dwm/system_help.mom -Tpdf | zathura -") },
+  { MODKEY,                       XK_F1,        spawn,            SHCMD("toggle_help") },
   { MODKEY,                       XK_F2,        spawn,            SHCMD("toggle_lockscreen") },
   { MODKEY,                       XK_F3,        spawn,            SHCMD("blueman-manager") },
   { MODKEY,                       XK_F4,        spawn,            SHCMD("mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
