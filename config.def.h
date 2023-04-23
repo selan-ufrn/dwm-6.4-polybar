@@ -161,7 +161,7 @@ static const char *term2cmd[]  = { "alacritty", NULL };
 //== kitty
 static const char *term3cmd[]  = { "st", NULL };
 //== firefox
-static const char *browser_cmd[]  = { "firefox", NULL };
+static const char *browser_cmd[]  = { "$BROWSER", NULL };
 //== File manager
 static const char *filemgr_cmd[]  = { "thunar", NULL };
 //== discord
@@ -184,26 +184,26 @@ static const Key keys[] = {
 	{ MODKEY|ALTKEY,                XK_Return,     spawn,             {.v = term3cmd } },
   { MODKEY,                       XK_c,          spawn,             SHCMD("toggle_dark_conky") },
 	{ MODKEY|ShiftMask,             XK_c,          spawn,             SHCMD("toggle_light_conky") },
-	{ MODKEY|Mod1Mask,              XK_4,          spawn,             SHCMD("scshot -s $HOME/Pictures/screenshots/") },
 	{ MODKEY,                       XK_t,          spawn,             SHCMD("toggle_picom") },
 	{ MODKEY,                       XK_a,          spawn,             SHCMD("toggle_systray") },
 
   //== Keybindings for programs using the format SUPER + ALT + "key"
 	{ MODKEY|ALTKEY,           XK_b,          spawn,                  {.v = browser_cmd} },
-	{ MODKEY|ALTKEY,           XK_c,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
-	{ MODKEY|ALTKEY,           XK_w,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
+	{ MODKEY|ALTKEY,           XK_c,          spawn,                  SHCMD("scshot -s $HOME/Pictures/screenshots/") },
 	{ MODKEY|ALTKEY,           XK_d,          spawn,                  {.v = discord_cmd} },
 	{ MODKEY|ALTKEY,           XK_e,          spawn,                  SHCMD("flameshot gui -p $HOME/Pictures/screenshots/") },
 	{ MODKEY|ALTKEY,           XK_f,          spawn,                  {.v = filemgr_cmd} },
  	{ MODKEY|ALTKEY,           XK_k,          togglescratch,          {.ui = 2 } },
 	{ MODKEY|ALTKEY,           XK_l,          spawn,                  SHCMD("i3lock") },
 	{ MODKEY|ALTKEY,           XK_o,          spawn,                  SHCMD("openboard") },
+	{ MODKEY|ALTKEY,           XK_p,          spawn,                  SHCMD("system-config-printer") },
  	{ MODKEY|ALTKEY,           XK_r,          togglescratch,          {.ui = 1 } },
 	{ MODKEY|ALTKEY,           XK_m,          togglescratch,          {.ui = 3 }  },
 	{ MODKEY|ALTKEY,           XK_s,          spawn,                  SHCMD("spotify") },
 // { MODKEY|ALTKEY,           XK_t,          spawn,                  SHCMD("system-monitoring-center") },
-	{ MODKEY|ALTKEY,           XK_v,          spawn,                  SHCMD("pavucontrol") },
 	{ MODKEY|ALTKEY,           XK_a,          spawn,                  SHCMD("pavucontrol") },
+	{ MODKEY|ALTKEY,           XK_v,          spawn,                  SHCMD("pavucontrol") },
+	{ MODKEY|ALTKEY,           XK_w,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
  	{ MODKEY,                  XK_z,          togglescratch,          {.ui = 0 } },
 
   //== Brightness and volume control
@@ -235,8 +235,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ALTKEY,                XK_j,      pushdown,       {0} },
-	{ MODKEY|ALTKEY,                XK_k,      pushup,         {0} },
+	{ MODKEY|ShiftMask,             XK_j,      pushdown,       {0} },
+	{ MODKEY|ShiftMask,             XK_k,      pushup,         {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
   { MODKEY,                       XK_m,      zoom,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
