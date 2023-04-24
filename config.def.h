@@ -161,7 +161,7 @@ static const char *term2cmd[]  = { "alacritty", NULL };
 //== kitty
 static const char *term3cmd[]  = { "st", NULL };
 //== firefox
-static const char *browser_cmd[]  = { "$BROWSER", NULL };
+static const char *browser_cmd[]  = { "${BROWSER}", NULL };
 //== File manager
 static const char *filemgr_cmd[]  = { "thunar", NULL };
 //== discord
@@ -188,7 +188,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_a,          spawn,             SHCMD("toggle_systray") },
 
   //== Keybindings for programs using the format SUPER + ALT + "key"
-	{ MODKEY|ALTKEY,           XK_b,          spawn,                  {.v = browser_cmd} },
+	{ MODKEY|ALTKEY,           XK_b,          spawn,                  SHCMD("$BROWSER") },
 	{ MODKEY|ALTKEY,           XK_c,          spawn,                  SHCMD("scshot -s $HOME/Pictures/screenshots/") },
 	{ MODKEY|ALTKEY,           XK_d,          spawn,                  {.v = discord_cmd} },
 	{ MODKEY|ALTKEY,           XK_e,          spawn,                  SHCMD("flameshot gui -p $HOME/Pictures/screenshots/") },
