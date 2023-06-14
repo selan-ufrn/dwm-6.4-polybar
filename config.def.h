@@ -10,7 +10,7 @@
 #include "colors/stock.h" // Custom colors. See comment in the code, where colors were originally defined.
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const Gap default_gap        = {.isgap = 1, .realgap = 10, .gappx = 10};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -75,7 +75,7 @@ static Sp scratchpads[] = {
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // static const char *tags[] = { "", "", "", "󰙯", "", "", "", "", ""};
-static const char *tags[] = { "", "", "", "", "", "", "", "", ""};
+static const char *tags[] = { "", "", "", "", "", "", "", "", ""};
 // 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -117,16 +117,22 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
-	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
-	{ "TTT",      bstack },
-	{ "===",      bstackhoriz },
+	{ "",      tile },    /* first entry is default */
+	{ "",      NULL },    /* no layout function means floating behavior */
+	{ "",      monocle },
+	{ "",      centeredmaster },
+	{ "",      centeredfloatingmaster },
+	{ "",      bstack },
+	{ "",      bstackhoriz },
 	{ NULL,       NULL },
 };
 
+	// { "flt",      NULL },    /* no layout function means floating behavior */
+	// { "s",      monocle },
+	// { "s",      centeredmaster },
+	// { "s",      centeredfloatingmaster },
+	// { "s",      bstack },
+	// { "s",      bstackhoriz },
 	// { "[]=",      tile },    /* first entry is default */
 	// { "><>",      NULL },    /* no layout function means floating behavior */
 	// { "[M]",      monocle },
