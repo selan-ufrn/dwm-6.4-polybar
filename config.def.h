@@ -113,7 +113,8 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+// static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -214,6 +215,7 @@ static const Key keys[] = {
 	{ MODKEY|ALTKEY,           XK_p,          spawn,                  SHCMD("system-config-printer") },
  	{ MODKEY|ALTKEY,           XK_r,          togglescratch,          {.ui = 1 } },
 	{ MODKEY|ALTKEY,           XK_m,          togglescratch,          {.ui = 3 }  },
+	{ MODKEY|ALTKEY,           XK_n,          spawn,                  SHCMD("dunstctl history-pop") }, 
 	{ MODKEY|ALTKEY,           XK_s,          spawn,                  SHCMD("spotify") },
 // { MODKEY|ALTKEY,           XK_t,          spawn,                  SHCMD("system-monitoring-center") },
 	{ MODKEY|ALTKEY,           XK_a,          spawn,                  SHCMD("pavucontrol") },
@@ -267,6 +269,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_space,      cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_BackSpace,  togglefloating, {0} },
  	{ MODKEY|ShiftMask,             XK_f,          togglefullscr,  {0} },
+	{ MODKEY,												XK_f,	   togglefullscreen, {0} },
  	{ MODKEY,                       XK_s,          togglesticky,   {0} },
 	// { MODKEY,                       XK_0,          view,                   {.ui = ~SPTAGMASK } },
 	// { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
