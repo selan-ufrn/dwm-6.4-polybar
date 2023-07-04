@@ -26,16 +26,6 @@ static const char *fonts[]          = {
   "monospace:size=10"
 };
 static const char dmenufont[]       = "Fira Code:style=Medium:pixelsize=18:antialias=true:autohint=true";
-// static const char dmenufont[]       = "JetBrainsMono Nerd Font:style=Medium:pixelsize=18:antialias=true:autohint=true";
-// static const char dmenufont[]       = "Ubuntu Nerd Font:size=12";
-// static const char dmenufont[]       = "VictorMono Nerd Font:style=Medium:pixelsize=18:antialias=true:autohint=true";
-// static const char dmenufont[]       = "monospace:size=10";
-// static const char dmenufont[]       = "fontawesome:size=12";
-// static const char dmenufont[]       = "Hack:size=12:antialias=true:autohint=true";
-// static const char dmenufont[]       = "Mononoki:size=12:antialias=true:autohint=true";
-// static const char dmenufont[]       = "Terminus:size=18:weight=bold:size=18:antialias=true:hinting=true";
-// static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:weight=bold:size=18:antialias=true:hinting=true";
-// static const char dmenufont[]       = "3270medium nerd font:weight=bold:size=12:antialias=true:hinting=true";
 
 // ====================================================
 // Now Colors come from colors/stock.h
@@ -64,12 +54,14 @@ const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL
 // const char *spcmd2[] = {"kitty", "--name", "spfm", "-o", "initial_window_width=122","-o", "initial_window_height=30", "--detach", "ranger", NULL };
 const char *spcmd3[] = {"keepassxc", NULL };
 const char *spcmd4[] = {"st", "-n", "spmusic", "-g", "144x41", "-e", "ncmpcpp", NULL };
+const char *spcmd5[] = {"st", "-n", "spbtop", "-g", "144x41", "-e", "btop", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spranger",    spcmd2},
 	{"keepassxc",   spcmd3},
 	{"spmusic",     spcmd4},
+	{"spbtop",      spcmd5},
 };
 
 /* tagging */
@@ -107,6 +99,7 @@ static const Rule rules[] = {
 	{ NULL,                 "spfm",		   NULL,           SPTAG(1),		 1,           1,			     -1 },
 	{ NULL,                 "keepassxc", NULL,           SPTAG(2),		 1,           1,			     -1 },
 	{ NULL,                 "spmusic",   NULL,           SPTAG(3),		 1,           1,			     -1 },
+	{ NULL,                 "spbtop",    NULL,           SPTAG(4),		 1,           1,			     -1 },
 };
 
 /* layout(s) */
@@ -205,7 +198,8 @@ static const Key keys[] = {
 
   //== Keybindings for programs using the format SUPER + ALT + "key"
 	{ MODKEY|ALTKEY,           XK_b,          spawn,                  SHCMD("$BROWSER") },
-	{ MODKEY|ALTKEY,           XK_c,          spawn,                  SHCMD("scshot -s $HOME/Pictures/screenshots/") },
+	// { MODKEY|ALTKEY,           XK_c,          spawn,                  SHCMD("scshot -s $HOME/Pictures/screenshots/") },
+	{ MODKEY|ALTKEY,           XK_c,          spawn,                  SHCMD("scapture -s $HOME/Pictures/screenshots/") },
 	{ MODKEY|ALTKEY,           XK_d,          spawn,                  {.v = discord_cmd} },
 	{ MODKEY|ALTKEY,           XK_e,          spawn,                  SHCMD("flameshot gui -p $HOME/Pictures/screenshots/") },
 	{ MODKEY|ALTKEY,           XK_f,          spawn,                  {.v = filemgr_cmd} },
@@ -217,7 +211,7 @@ static const Key keys[] = {
 	{ MODKEY|ALTKEY,           XK_m,          togglescratch,          {.ui = 3 }  },
 	{ MODKEY|ALTKEY,           XK_n,          spawn,                  SHCMD("dunstctl history-pop") }, 
 	{ MODKEY|ALTKEY,           XK_s,          spawn,                  SHCMD("spotify") },
-// { MODKEY|ALTKEY,           XK_t,          spawn,                  SHCMD("system-monitoring-center") },
+  { MODKEY|ALTKEY,           XK_t,          togglescratch,          {.ui = 4 }  }, 
 	{ MODKEY|ALTKEY,           XK_a,          spawn,                  SHCMD("pavucontrol") },
 	{ MODKEY|ALTKEY,           XK_v,          spawn,                  SHCMD("pavucontrol") },
 	{ MODKEY|ALTKEY,           XK_w,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
