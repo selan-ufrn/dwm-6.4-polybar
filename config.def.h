@@ -84,9 +84,9 @@ static const Rule rules[] = {
 	{ "zoom",               NULL,        NULL,           0,            1,           1,           -1 },
 	{ "xpad",               NULL,        NULL,           0,            1,           1,           -1 },
 	{ "gnome-calculator",   NULL,        NULL,           0,            1,           1,           -1 },
+	// { "KeePassXC",          NULL,        NULL,           0,            1,           1,           -1 },
 	{ "Lxappearance",       NULL,        NULL,           0,            1,           1,           -1 },
 	{ NULL,                 NULL,        "System Logout",0,            1,           1,           -1 },
-	{ NULL,                 NULL,        "Brave",        1 << 1,       1,           0,           -1 },
 	{ "Skype",              NULL,        NULL,           1 << 5,       1,           1,           -1 },
 	{ "firefox",            NULL,        NULL,           1 << 1,       1,           0,           -1 },
 	{ "TelegramDesktop",    NULL,        NULL,           1 << 2,       1,           0,           -1 },
@@ -100,6 +100,7 @@ static const Rule rules[] = {
 	{ NULL,                 "keepassxc", NULL,           SPTAG(2),		 1,           1,			     -1 },
 	{ NULL,                 "spmusic",   NULL,           SPTAG(3),		 1,           1,			     -1 },
 	{ NULL,                 "spbtop",    NULL,           SPTAG(4),		 1,           1,			     -1 },
+	{ "sp_term",         NULL,        NULL,           0,            1,           1,           -1 },
 };
 
 /* layout(s) */
@@ -184,6 +185,14 @@ static const char *discord_cmd[]  = { "discord", NULL };
 // After that, press MODKEY+Fn+F5 to reload color scheme based on xrbd
 // static const char *sxiv_cmd[]  = { "sxiv -t /home/selan/Pictures/wallpapers", NULL };
 
+/* scratchpads */
+static const char *sp_term[] = { "scratch.sh", "pad", NULL };
+// static const char *scratchvifm[] = { "scratch.sh", "vifm", NULL };
+// static const char *scratchlf[] = { "scratch.sh", "lf", NULL };
+static const char *sp_pulse[] = { "scratch.sh", "pulse", NULL };
+static const char *sp_keepass[] = { "scratch.sh", "keepass", NULL };
+
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,          spawn,             SHCMD("dmenu_run_customized.sh") }, 
@@ -203,7 +212,8 @@ static const Key keys[] = {
 	{ MODKEY|ALTKEY,           XK_d,          spawn,                  {.v = discord_cmd} },
 	{ MODKEY|ALTKEY,           XK_e,          spawn,                  SHCMD("flameshot gui -p $HOME/Pictures/screenshots/") },
 	{ MODKEY|ALTKEY,           XK_f,          spawn,                  {.v = filemgr_cmd} },
- 	{ MODKEY|ALTKEY,           XK_k,          togglescratch,          {.ui = 2 } },
+ 	// { MODKEY|ALTKEY,           XK_k,          togglescratch,          {.ui = 2 } },
+	{ MODKEY|ALTKEY,           XK_k,          spawn,                  {.v = sp_keepass} },	// launches floating scratchpad terminal window
 	{ MODKEY|ALTKEY,           XK_l,          spawn,                  SHCMD("i3lock") },
 	{ MODKEY|ALTKEY,           XK_o,          spawn,                  SHCMD("openboard") },
 	{ MODKEY|ALTKEY,           XK_p,          spawn,                  SHCMD("system-config-printer") },
@@ -215,7 +225,8 @@ static const Key keys[] = {
 	{ MODKEY|ALTKEY,           XK_a,          spawn,                  SHCMD("pavucontrol") },
 	{ MODKEY|ALTKEY,           XK_v,          spawn,                  SHCMD("pavucontrol") },
 	{ MODKEY|ALTKEY,           XK_w,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
- 	{ MODKEY,                  XK_z,          togglescratch,          {.ui = 0 } },
+ 	// { MODKEY,                  XK_z,          togglescratch,          {.ui = 0 } },
+	{ MODKEY,                  XK_z,          spawn,                  {.v = sp_term} },	// launches floating scratchpad terminal window
 
   //== Brightness and volume control
   { 0,                  XF86XK_AudioLowerVolume,  spawn,       SHCMD("vol_lower") },
