@@ -43,24 +43,6 @@ static const char dmenufont[]       = "Fira Code:style=Medium:pixelsize=18:antia
 	// [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 // };
 
-typedef struct {
-	const char *name;
-	const void *cmd;
-} Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd3[] = {"keepassxc", NULL };
-const char *spcmd4[] = {"st", "-n", "spmusic", "-g", "144x41", "-e", "ncmpcpp", NULL };
-const char *spcmd5[] = {"st", "-n", "spbtop", "-g", "144x41", "-e", "btop", NULL };
-static Sp scratchpads[] = {
-	/* name          cmd  */
-	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
-	{"keepassxc",   spcmd3},
-	{"spmusic",     spcmd4},
-	{"spbtop",      spcmd5},
-};
-
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // static const char *tags[] = { "", "", "", "󰙯", "", "", "", "", ""};
@@ -97,11 +79,6 @@ static const Rule rules[] = {
 	{ "sp_pulse",           NULL,        NULL,           0,            1,           1,           -1 },
 	{ "sp_ranger",          NULL,        NULL,           0,            1,           1,           -1 },
 	// { "mpv",                NULL,        NULL,           0,            1,           1,           -1 },
-	// { NULL,                 "spterm",		 NULL,           SPTAG(0),		 1,           1,			     -1 },
-	// { NULL,                 "spfm",		   NULL,           SPTAG(1),		 1,           1,			     -1 },
-	// { NULL,                 "keepassxc", NULL,           SPTAG(2),		 1,           1,			     -1 },
-	// { NULL,                 "spmusic",   NULL,           SPTAG(3),		 1,           1,			     -1 },
-	// { NULL,                 "spbtop",    NULL,           SPTAG(4),		 1,           1,			     -1 },
 };
 
 /* layout(s) */
